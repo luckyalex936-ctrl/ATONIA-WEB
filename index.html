@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Atonia Company Limited | Earthworks & Heavy Equipment Hire</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .fleet-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.fleet-gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 16px;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.fleet-gallery img:hover {
+    transform: scale(1.05);
+}
+const fleetImages = document.querySelectorAll(".fleet-gallery img");
+
+fleetImages.forEach(img => {
+    img.onclick = () => {
+        document.getElementById("lightbox").style.display = "block";
+        document.getElementById("lightbox-img").src = img.src;
+    };
+});
+        .slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.slider img {
+    width: 70%;
+    max-width: 800px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    transition: 0.3s ease;
+}
+
+.slider button {
+    background: #0a1c2f;
+    color: white;
+    border: none;
+    font-size: 28px;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.slider button:hover {
+    background: #FFB347;
+    color: #0a1c2f;
+}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e2a3e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* header / nav */
+        .navbar {
+            background: #0a1c2f;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .logo h1 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #FFD966, #FFB347);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo p {
+            font-size: 0.75rem;
+            color: #b0c4de;
+            letter-spacing: 0.5px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #f0f4f8;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover {
+            color: #FFC857;
+        }
+        .contact-header {
+            background: #ffb34720;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+        }
+        .contact-header i {
+            margin-right: 6px;
+            color: #FFC857;
+        }
+
+        /* hero */
+        .hero {
+    position: relative;
+    color: white;
+    padding: 80px 0 70px;
+    background: linear-gradient(rgba(7,27,43,0.75), rgba(14,42,63,0.85)),
+                url('images/hero.jpg') center/cover no-repeat;
+}
+    
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .hero-text {
+            flex: 1;
+        }
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #cfdfed;
+            margin-bottom: 30px;
+            max-width: 550px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: #FFB347;
+            color: #0a1c2f;
+            padding: 12px 32px;
+            font-weight: 700;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: inline-block;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+        }
+        .btn-primary:hover {
+            background: #FFA01E;
+            transform: translateY(-2px);
+        }
+        .btn-outline-light {
+            border: 2px solid #FFC857;
+            background: transparent;
+            padding: 12px 32px;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .btn-outline-light:hover {
+            background: #FFC85720;
+            border-color: #FFE0A3;
+        }
+        .hero-stats {
+            background: #ffffff10;
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 20px 28px;
+            flex: 0.7;
+            min-width: 240px;
+        }
+        .stat-item {
+            margin: 12px 0;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #FFD966;
+        }
+        .about-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+}
+
+.about-text {
+    flex: 1.2;
+    min-width: 280px;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 280px;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 24px;
+    object-fit: cover;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.about-card {
+    flex: 1;
+    background: #f0f5fa;
+    border-radius: 24px;
+    padding: 24px;
+}
+
+.about-card i {
+    font-size: 2rem;
+    color: #FFB347;
+    margin-bottom: 12px;
+}
+.about-image img:hover {
+    transform: scale(1.03);
+    transition: 0.3s ease;
+}
+
+        /* sections general */
+        section {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0a1c2f;
+            position: relative;
+            display: inline-block;
+        }
+        .section-sub {
+            color: #4a627a;
+            max-width: 700px;
+            margin-bottom: 48px;
+            font-size: 1rem;
+        }
+        .bg-light {
+            background-color: #f9fafc;
+        }
+
+        /* core values cards */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+            margin-top: 20px;
+        }
+        .value-card {
+            background: white;
+            padding: 28px 20px;
+            border-radius: 24px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.03);
+            transition: all 0.25s;
+            border: 1px solid #eef2f6;
+        }
+        .value-card i {
+            font-size: 2.5rem;
+            color: #FFB347;
+            margin-bottom: 18px;
+        }
+        .value-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+        .value-card p {
+            color: #2c3f55;
+            font-size: 0.9rem;
+        }
+        .value-card:hover {
+            transform: translateY(-6px);
+            border-color: #FFD966;
+        }
+
+        /* services + equipment */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        .service-item {
+            background: white;
+            border-radius: 28px;
+            padding: 28px;
+            transition: 0.2s;
+            border: 1px solid #e9edf2;
+        }
+        .service-icon {
+            background: #0a1c2f10;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        .service-icon i {
+            font-size: 30px;
+            color: #FF8C2E;
+        }
+        .service-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        .service-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .service-item li {
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        .service-item li i {
+            color: #FFB347;
+            font-size: 0.8rem;
+        }
+
+        .equipment-showcase {
+            background: #ffffff;
+            border-radius: 40px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.05);
+            padding: 40px 30px;
+            margin-top: 20px;
+        }
+        .equipment-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+        }
+        .equipment-tags span {
+            background: #eef3fc;
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* projects portfolio (visual) */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        .project-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+            border: 1px solid #edf2f7;
+        }
+        .project-img {
+            background: #0e2a3f;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+        }
+        .project-info {
+            padding: 20px;
+        }
+        .project-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        /* management + safety */
+        .management-safety {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .ms-card {
+            flex: 1;
+            background: white;
+            padding: 32px;
+            border-radius: 28px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+        }
+
+        /* name change certificate highlight */
+        .legal-note {
+            background: #0a1c2f;
+            color: white;
+            border-radius: 32px;
+            padding: 36px 28px;
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+
+        /* footer */
+        footer {
+            background: #05121e;
+            color: #cbd5e1;
+            padding: 50px 0 30px;
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col p i {
+            width: 28px;
+            color: #FFC857;
+        }
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #1e3a4d;
+            padding-top: 30px;
+            font-size: 0.8rem;
+        }
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 2rem; }
+            .nav-flex { flex-direction: column; text-align: center; }
+            .section-title { font-size: 1.8rem; }
+            section { padding: 50px 0; }
+        }
+        .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+}
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container nav-flex">
+        <div class="logo">
+            <h1>ATONIA COMPANY LIMITED</h1>
+            <p>Earthworks · Heavy Equipment · Construction Solutions</p>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#equipment">Equipment</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="contact-header">
+            <i class="fas fa-phone-alt"></i> +254 724 716 055
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="container hero-grid">
+        <div class="hero-text">
+            <h1>Leading Earthworks & Heavy Equipment Hire</h1>
+            <p>Over 200 pieces of earthmoving equipment, tipper trucks, and unmatched expertise across Kenya. Large-scale malls, highways, mining, residential parks — we deliver precision.</p>
+            <div class="btn-group">
+                <a href="#contact" class="btn-primary"><i class="fas fa-truck-moving"></i> Request a quote</a>
+                <a href="#services" class="btn-outline-light">Explore services</a>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item"><span class="stat-number">200+</span><br>Fleet of equipment</div>
+            <div class="stat-item"><span class="stat-number">2+ decades</span><br>Hands-on directors</div>
+            <div class="stat-item"><span class="stat-number">Zero harm</span><br>Safety priority</div>
+        </div>
+    </div>
+</section>
+
+<!-- Who We Are + About -->
+<div class="about-flex">
+    
+    <div class="about-text">
+        <p style="margin-bottom: 16px;">
+            With our own in-house workshop and highly trained crews, we deploy equipment across large-scale shopping malls, office developments, highways, and mining sites. Our maintenance culture and comprehensive checking process guarantee seamless delivery.
+        </p>
+        <p>
+            We attract the best specialists by paying top dollar and keep skills sharp through continuous training. Cutting-edge technology and constant research keep us ahead.
+        </p>
+    </div>
+
+    <div class="about-image">
+        <img src="images/about.jpg" alt="Earthworks equipment in action">
+    </div>
+
+    <div class="about-card">
+        <i class="fas fa-chalkboard-user"></i>
+        <h3>Our Unique Approach</h3>
+        <p>
+            Satisfying customer needs in the most cost-effective and efficient manner. Our experienced staff assess proposed contracts thoroughly — you get far more than hired equipment, you get sound advice.
+        </p>
+    </div>
+
+</div>
+</section>
+
+<!-- Core Values -->
+<section class="bg-light">
+    <div class="container">
+        <h2 class="section-title">Core Values</h2>
+        <p class="section-sub">The principles that drive our reputation and excellence.</p>
+        <div class="values-grid">
+            <div class="value-card"><i class="fas fa-medal"></i><h3>Service above all</h3><p>Customer first, always.</p></div>
+            <div class="value-card"><i class="fas fa-ruler-combined"></i><h3>Fanatical consistency</h3><p>Attention to detail, every time.</p></div>
+            <div class="value-card"><i class="fas fa-tachometer-alt"></i><h3>Hard work & productivity</h3><p>Individual accountability drives results.</p></div>
+            <div class="value-card"><i class="fas fa-globe"></i><h3>Excellence in reputation</h3><p>Striving beyond expectations.</p></div>
+            <div class="value-card"><i class="fas fa-lightbulb"></i><h3>Open ideas</h3><p>Committed to solving problems.</p></div>
+            <div class="value-card"><i class="fas fa-chart-line"></i><h3>Aggressive goals</h3><p>Rewarding progress & accountability.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Products & Services + Demolition / Construction Materials -->
+<section id="services">
+    <div class="container">
+        <h2 class="section-title">Products & Services</h2>
+        <p class="section-sub">End-to-end solutions from demolition to material supply, with modern certified plant and cross-border logistics.</p>
+        <div class="service-grid">
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
+                <h3>Demolition</h3>
+                <ul>
+                    <li><i class="fas fa-tree"></i> Tree & stump removal</li>
+                    <li><i class="fas fa-home"></i> Residential & commercial demolition</li>
+                    <li><i class="fas fa-fire-extinguisher"></i> Fire cleanup & structure removal</li>
+                    <li><i class="fas fa-road"></i> Driveway removal</li>
+                </ul>
+            </div>
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-building"></i></div>
+                <h3>Construction Services</h3>
+                <ul>
+                    <li><i class="fas fa-drafting-compass"></i> New building construction</li>
+                    <li><i class="fas fa-hammer"></i> Renovations & perimeter walls</li>
+                    <li><i class="fas fa-water"></i> Plumbing & underground water tanks</li>
+                </ul>
+            </div>
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-truck"></i></div>
+                <h3>Supply of Materials</h3>
+                <ul>
+                    <li><i class="fas fa-cube"></i> Sand, ballast, machine cut stones</li>
+                    <li><i class="fas fa-mountain"></i> Murram, red soil, hardcore</li>
+                    <li><i class="fas fa-gem"></i> Quarry waste, cement & more</li>
+                </ul>
+            </div>
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-draw-polygon"></i></div>
+                <h3>Excavation Services</h3>
+                <ul>
+                    <li><i class="fas fa-vector-square"></i> Trench foundations & caisson systems</li>
+                    <li><i class="fas fa-people-arrows"></i> Multifaceted excavation & staging</li>
+                    <li><i class="fas fa-chart-simple"></i> Soil retention & project scheduling</li>
+                </ul>
+            </div>
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-road"></i></div>
+                <h3>Road Grading</h3>
+                <ul>
+                    <li><i class="fas fa-water"></i> Re-grading after erosion</li>
+                    <li><i class="fas fa-drain"></i> Ditch cleaning & culvert installation</li>
+                    <li><i class="fas fa-gravel"></i> Gravel supply & maintenance package</li>
+                </ul>
+            </div>
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-crane"></i></div>
+                <h3>Lowloader, Crane & Trailers</h3>
+                <ul>
+                    <li><i class="fas fa-truck-ramp-box"></i> Heavy haulage across borders</li>
+                    <li><i class="fas fa-weight-hanging"></i> Efficient movement of mechanized plant</li>
+                </ul>
+                <div style="margin-top: 12px;"><i class="fas fa-rocket"></i> Rock-breaking services (wet/dry rates)</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Equipment Fleet -->
+<section id="equipment" class="bg-light">
+    <div class="container">
+        <h2 class="section-title">Our Fleet & Equipment</h2>
+        <p class="section-sub">Bulldozers, excavators, graders, lowloaders, tippers, transit trailers, wheel shovels, steam rollers, hydraulic breakers — always cutting edge.</p>
+        <div class="equipment-showcase">
+            <div class="fleet-gallery">
+    <img src="images/g74.jpg" alt="Excavator">
+    <img src="images/g75.jpg" alt="Bulldozer">
+    <img src="images/g76.jpg" alt="Grader">
+    <img src="images/g77.jpg" alt="Tipper Truck">
+    <img src="images/g78.jpg" alt="Low Loader">
+    <img src="images/g79.jpg" alt="Roller">
+</div>
+            <div class="equipment-tags">
+                <span><i class="fas fa-tractor"></i> Bulldozers</span>
+                <span><i class="fas fa-excavator"></i> Excavators</span>
+                <span><i class="fas fa-grip-lines"></i> Graders</span>
+                <span><i class="fas fa-trailer"></i> Lowloaders</span>
+                <span><i class="fas fa-dump-truck"></i> Tippers</span>
+                <span><i class="fas fa-bus"></i> Transit Trailers</span>
+                <span><i class="fas fa-shovel"></i> Wheel Shovels</span>
+                <span><i class="fas fa-oil-can"></i> Steam Rollers</span>
+                <span><i class="fas fa-hammer"></i> Hydraulic Breakers</span>
+            </div>
+            <p style="margin-top: 32px; text-align: center; font-style: italic;">In-house workshop & maintenance crew — minimal downtime, maximum productivity.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Portfolio -->
+<section id="projects">
+    <div class="container">
+        <h2 class="section-title">Projects Portfolio</h2>
+        <p class="section-sub">Large-scale shopping malls, highway upgrades, residential parks, mining & industrial developments — we deliver excellence across Kenya.</p>
+        <div class="projects-grid">
+            <div class="project-card"><div class="project-img"><i class="fas fa-city fa-3x"></i></div><div class="project-info"><h4>Mixed-use Malls</h4><p>Foundation & earthworks for major retail hubs.</p></div></div>
+            <div class="project-card"><div class="project-img"><i class="fas fa-road fa-3x"></i></div><div class="project-info"><h4>Highway Upgrades</h4><p>Road grading, widening & drainage systems.</p></div></div>
+            <div class="project-card"><div class="project-img"><i class="fas fa-hard-hat fa-3x"></i></div><div class="project-info"><h4>Office Developments</h4><p>Bulk excavation & site preparation.</p></div></div>
+            <div class="project-card"><div class="project-img"><i class="fas fa-chalkboard-user fa-3x"></i></div><div class="project-info"><h4>Mining Support</h4><p>Rock breaking, material haulage & infrastructure.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Management & Health & Safety -->
+<section class="bg-light">
+    <div class="container">
+        <div class="management-safety">
+            <div class="ms-card">
+                <i class="fas fa-user-tie" style="font-size: 2.2rem; color:#FFB347;"></i>
+                <h3 style="margin: 16px 0 12px;">Management Expertise</h3>
+                <p>Each director has 10–20 years hands-on experience in bulk earthworks, roads, pipelines, demolition, building and township services. Practical expertise drives insight that cannot be learnt from theory — we leverage this advantage for every client.</p>
+            </div>
+            <div class="ms-card">
+                <i class="fas fa-shield-heart" style="font-size: 2.2rem; color:#FFB347;"></i>
+                <h3 style="margin: 16px 0 12px;">Health & Safety</h3>
+                <p>“Zero harm” is our strategic objective. Permanent Health & Safety Officer, ongoing training, environmental compliance, and zero tolerance for non-compliance. Occupational screening ensures all employees are fit for work.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="gallery" class="bg-light">
+    <div class="container">
+        <h2 class="section-title">Project Gallery</h2>
+
+        <div class="slider">
+            <button id="prevBtn">&#10094;</button>
+
+            <img id="sliderImage" src="" alt="Project image">
+
+            <button id="nextBtn">&#10095;</button>
+        </div>
+
+        <p style="text-align:center; margin-top:10px;" id="counter"></p>
+    </div>
+</section>
+<!-- Certificate of name change (official) -->
+<div class="container">
+    <div class="legal-note">
+        <i class="fas fa-certificate" style="font-size: 2rem; margin-bottom: 12px; display: inline-block;"></i>
+        <h3>Officially Registered: ATONIA COMPANY LIMITED</h3>
+        <p>Formerly ATONIA GENERAL SUPPLIES LIMITED — Name change certified on 24th October, 2025. Registrar of Companies. A private limited company under the Companies Act.</p>
+        <small style="color:#FFD966;">Certificate of incorporation change | trusted partner for government & private sector</small>
+    </div>
+</div>
+
+<!-- Contact & Footer -->
+<footer id="contact">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3 style="color: white; margin-bottom: 16px;">Atonia Company Ltd</h3>
+                <p><i class="fas fa-map-marker-alt"></i> P.O. Box 779, Village Market, Nairobi</p>
+                <p><i class="fas fa-phone"></i> +254 724 716 055 &nbsp;|&nbsp; +254 720 470 470</p>
+                <p><i class="fas fa-envelope"></i> info@atoniageneralsupplies.co.ke</p>
+                <p><i class="fas fa-globe"></i> www.atoniageneralsupplies.co.ke</p>
+            </div>
+            <div class="footer-col">
+                <h3 style="color: white; margin-bottom: 16px;">Quick links</h3>
+                <p><a href="#home" style="color:#ccc; text-decoration: none;">Home</a></p>
+                <p><a href="#services" style="color:#ccc; text-decoration: none;">Services</a></p>
+                <p><a href="#equipment" style="color:#ccc; text-decoration: none;">Equipment fleet</a></p>
+                <p><a href="#projects" style="color:#ccc; text-decoration: none;">Project portfolio</a></p>
+            </div>
+            <div class="footer-col">
+                <h3 style="color: white; margin-bottom: 16px;">Operational regions</h3>
+                <p>Nationwide coverage: Nairobi, Mombasa, Kisumu, Nakuru, Eldoret & cross-border logistics.</p>
+                <div style="margin-top: 12px;"><i class="fas fa-tools"></i> 24/7 workshop & support</div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 ATONIA COMPANY LIMITED — Leading earthworks & heavy equipment hire. All rights reserved.
+        </div>
+    </div>
+</footer>
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+</div>
+
+<style>
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+</style>
+<script>
+const gallery = document.getElementById("gallery");
+
+const totalImages = 73;
+let currentIndex = 1;
+
+const sliderImage = document.getElementById("sliderImage");
+const counter = document.getElementById("counter");
+
+function updateImage() {
+    sliderImage.src = `images/g${currentIndex}.jpeg`;
+    counter.textContent = `Project ${currentIndex} of ${totalImages}`;
+}
+
+// Next
+document.getElementById("nextBtn").onclick = () => {
+    currentIndex++;
+    if (currentIndex > totalImages) currentIndex = 1;
+    updateImage();
+};
+
+// Previous
+document.getElementById("prevBtn").onclick = () => {
+    currentIndex--;
+    if (currentIndex < 1) currentIndex = totalImages;
+    updateImage();
+};
+</script>
+</body>
+</html>
