@@ -716,7 +716,7 @@
         <div class="slider">
             <button id="prevBtn">&#10094;</button>
 
-            <img id="sliderImage" src="" alt="Project image">
+           <img id="sliderImage" src="images/g1.jpeg" alt="Project image" loading="lazy">
 
             <button id="nextBtn">&#10095;</button>
         </div>
@@ -800,33 +800,36 @@
 }
 </style>
 <script>
-const gallery = document.getElementById("gallery");
-
 const totalImages = 73;
 let currentIndex = 1;
 
 const sliderImage = document.getElementById("sliderImage");
 const counter = document.getElementById("counter");
 
+// Update image
 function updateImage() {
     sliderImage.src = `images/g${currentIndex}.jpeg`;
     counter.textContent = `Project ${currentIndex} of ${totalImages}`;
 }
 
-// Next
+// Load first image immediately
+updateImage();
+
+// Next button
 document.getElementById("nextBtn").onclick = () => {
     currentIndex++;
     if (currentIndex > totalImages) currentIndex = 1;
     updateImage();
 };
 
-// Previous
+// Previous button
 document.getElementById("prevBtn").onclick = () => {
     currentIndex--;
     if (currentIndex < 1) currentIndex = totalImages;
     updateImage();
 };
-    <script>
+
+// Fleet lightbox
 const fleetImages = document.querySelectorAll(".fleet-gallery img");
 
 fleetImages.forEach(img => {
@@ -840,7 +843,6 @@ fleetImages.forEach(img => {
 document.querySelector(".close").onclick = () => {
     document.getElementById("lightbox").style.display = "none";
 };
-</script>
 </script>
 </body>
 </html>
