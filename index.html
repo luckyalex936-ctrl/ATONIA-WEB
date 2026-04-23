@@ -28,6 +28,12 @@
     .logo p {
         font-size: 0.65rem;
     }
+    .about-flex {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+}
 }
 .fleet-gallery img {
     width: 100%;
@@ -500,7 +506,6 @@
     </style>
 </head>
 <body>
-
 <nav class="navbar">
     <div class="container nav-flex">
         <div class="logo">
@@ -541,15 +546,12 @@
 </section>
 
 <!-- Who We Are + About -->
+<section id="about">
+<div class="container">
 <div class="about-flex">
-    
+
     <div class="about-text">
-        <p style="margin-bottom: 16px;">
-            With our own in-house workshop and highly trained crews, we deploy equipment across large-scale shopping malls, office developments, highways, and mining sites. Our maintenance culture and comprehensive checking process guarantee seamless delivery.
-        </p>
-        <p>
-            We attract the best specialists by paying top dollar and keep skills sharp through continuous training. Cutting-edge technology and constant research keep us ahead.
-        </p>
+        ...
     </div>
 
     <div class="about-image">
@@ -557,16 +559,41 @@
     </div>
 
     <div class="about-card">
-        <i class="fas fa-chalkboard-user"></i>
-        <h3>Our Unique Approach</h3>
-        <p>
-            Satisfying customer needs in the most cost-effective and efficient manner. Our experienced staff assess proposed contracts thoroughly — you get far more than hired equipment, you get sound advice.
-        </p>
+        ...
+    </div>
+
+</div>
+</div>
+<section id="about">
+<div class="container">
+
+    <div class="about-flex">
+
+        <div class="about-text">
+            <p style="margin-bottom: 16px;">
+                With our own in-house workshop and highly trained crews, we deploy equipment across large-scale shopping malls, office developments, highways, and mining sites. Our maintenance culture and comprehensive checking process guarantee seamless delivery.
+            </p>
+            <p>
+                We attract the best specialists by paying top dollar and keep skills sharp through continuous training. Cutting-edge technology and constant research keep us ahead.
+            </p>
+        </div>
+
+        <div class="about-image">
+            <img src="images/about.jpg" alt="Earthworks equipment in action">
+        </div>
+
+        <div class="about-card">
+            <i class="fas fa-chalkboard-user"></i>
+            <h3>Our Unique Approach</h3>
+            <p>
+                Satisfying customer needs in the most cost-effective and efficient manner. Our experienced staff assess proposed contracts thoroughly — you get far more than hired equipment, you get sound advice.
+            </p>
+        </div>
+
     </div>
 
 </div>
 </section>
-
 <!-- Core Values -->
 <section class="bg-light">
     <div class="container">
@@ -663,8 +690,8 @@
             <div class="fleet-gallery">
     <img src="images/g74.jpg" alt="Excavator" loading="lazy">
     <img src="images/g75.jpg" alt="Bulldozer" loading="lazy">
-    <img src="images/g76.jpg" alt="Grader" loading="lazy"">
-    <img src="images/g77.jpg" alt="Tipper Truck" loading" ="lazy"">
+    <img src="images/g76.jpg" alt="Grader" loading="lazy">
+    <img src="images/g77.jpg" alt="Tipper Truck" loading" ="lazy">
     <img src="images/g78.jpg" alt="Low Loader" loading="lazy">
     <img src="images/g79.jpg" alt="Roller" loading="lazy">
 </div>
@@ -809,60 +836,38 @@
     const totalImages = 73;
 let currentIndex = 1;
 
-// preload images into browser cache
+const sliderImage = document.getElementById("sliderImage");
+const counter = document.getElementById("counter");
+
+// preload images
 for (let i = 1; i <= totalImages; i++) {
     const img = new Image();
     img.src = `images/g${i}.jpeg`;
 }
-    const sliderImage = document.getElementById("sliderImage");
-const counter = document.getElementById("counter");
 
 function updateImage() {
     sliderImage.src = `images/g${currentIndex}.jpeg`;
     counter.textContent = `Project ${currentIndex} of ${totalImages}`;
 }
 
+// init
 updateImage();
 
-document.getElementById("nextBtn").onclick = () => {
-    currentIndex = currentIndex % totalImages + 1;
-    updateImage();
-};
-
-document.getElementById("prevBtn").onclick = () => {
-    currentIndex = (currentIndex - 2 + totalImages) % totalImages + 1;
-    updateImage();
-};
-const totalImages = 73;
-let currentIndex = 1;
-
-const sliderImage = document.getElementById("sliderImage");
-const counter = document.getElementById("counter");
-
-// Update image
-function updateImage() {
-    sliderImage.src = `images/g${currentIndex}.jpeg`;
-    counter.textContent = `Project ${currentIndex} of ${totalImages}`;
-}
-
-// Load first image immediately
-updateImage();
-
-// Next button
+// next
 document.getElementById("nextBtn").onclick = () => {
     currentIndex++;
     if (currentIndex > totalImages) currentIndex = 1;
     updateImage();
 };
 
-// Previous button
+// prev
 document.getElementById("prevBtn").onclick = () => {
     currentIndex--;
     if (currentIndex < 1) currentIndex = totalImages;
     updateImage();
 };
 
-// Fleet lightbox
+// lightbox
 const fleetImages = document.querySelectorAll(".fleet-gallery img");
 
 fleetImages.forEach(img => {
@@ -872,10 +877,9 @@ fleetImages.forEach(img => {
     };
 });
 
-// Close lightbox
 document.querySelector(".close").onclick = () => {
     document.getElementById("lightbox").style.display = "none";
 };
-</script>
+</script>   
 </body>
 </html>
