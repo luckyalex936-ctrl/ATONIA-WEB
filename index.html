@@ -658,12 +658,12 @@
         <p class="section-sub">Bulldozers, excavators, graders, lowloaders, tippers, transit trailers, wheel shovels, steam rollers, hydraulic breakers — always cutting edge.</p>
         <div class="equipment-showcase">
             <div class="fleet-gallery">
-    <img src="images/g74.jpg" alt="Excavator">
-    <img src="images/g75.jpg" alt="Bulldozer">
-    <img src="images/g76.jpg" alt="Grader">
-    <img src="images/g77.jpg" alt="Tipper Truck">
-    <img src="images/g78.jpg" alt="Low Loader">
-    <img src="images/g79.jpg" alt="Roller">
+    <img src="images/g74.jpg" alt="Excavator" loading="lazy">
+    <img src="images/g75.jpg" alt="Bulldozer" loading="lazy">
+    <img src="images/g76.jpg" alt="Grader" loading="lazy"">
+    <img src="images/g77.jpg" alt="Tipper Truck" loading" ="lazy"">
+    <img src="images/g78.jpg" alt="Low Loader" loading="lazy">
+    <img src="images/g79.jpg" alt="Roller" loading="lazy">
 </div>
             <div class="equipment-tags">
                 <span><i class="fas fa-tractor"></i> Bulldozers</span>
@@ -803,6 +803,33 @@
 }
 </style>
 <script>
+    const totalImages = 73;
+let currentIndex = 1;
+
+// preload images into browser cache
+for (let i = 1; i <= totalImages; i++) {
+    const img = new Image();
+    img.src = `images/g${i}.jpeg`;
+}
+    const sliderImage = document.getElementById("sliderImage");
+const counter = document.getElementById("counter");
+
+function updateImage() {
+    sliderImage.src = `images/g${currentIndex}.jpeg`;
+    counter.textContent = `Project ${currentIndex} of ${totalImages}`;
+}
+
+updateImage();
+
+document.getElementById("nextBtn").onclick = () => {
+    currentIndex = currentIndex % totalImages + 1;
+    updateImage();
+};
+
+document.getElementById("prevBtn").onclick = () => {
+    currentIndex = (currentIndex - 2 + totalImages) % totalImages + 1;
+    updateImage();
+};
 const totalImages = 73;
 let currentIndex = 1;
 
