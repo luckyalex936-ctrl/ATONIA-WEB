@@ -27,14 +27,6 @@
 .fleet-gallery img:hover {
     transform: scale(1.05);
 }
-const fleetImages = document.querySelectorAll(".fleet-gallery img");
-
-fleetImages.forEach(img => {
-    img.onclick = () => {
-        document.getElementById("lightbox").style.display = "block";
-        document.getElementById("lightbox-img").src = img.src;
-    };
-});
         .slider {
     display: flex;
     align-items: center;
@@ -93,7 +85,7 @@ fleetImages.forEach(img => {
             background: #0a1c2f;
             color: white;
             padding: 1rem 0;
-            position: sticky;
+            position: relative;
             top: 0;
             z-index: 100;
             box-shadow: 0 8px 20px rgba(0,0,0,0.08);
@@ -820,6 +812,21 @@ document.getElementById("prevBtn").onclick = () => {
     if (currentIndex < 1) currentIndex = totalImages;
     updateImage();
 };
+    <script>
+const fleetImages = document.querySelectorAll(".fleet-gallery img");
+
+fleetImages.forEach(img => {
+    img.onclick = () => {
+        document.getElementById("lightbox").style.display = "block";
+        document.getElementById("lightbox-img").src = img.src;
+    };
+});
+
+// Close lightbox
+document.querySelector(".close").onclick = () => {
+    document.getElementById("lightbox").style.display = "none";
+};
+</script>
 </script>
 </body>
 </html>
